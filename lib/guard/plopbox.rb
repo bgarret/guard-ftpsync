@@ -39,6 +39,8 @@ module Guard
           retry if (attempts < 3)
           log "Exceeded 3 attempts to upload #{path}"
         end
+
+        Notifier.notify "Synced:\n#{paths.join("\n")}"
       end
     end
 
