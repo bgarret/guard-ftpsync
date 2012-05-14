@@ -8,18 +8,27 @@ module Guard
     attr_reader :ftp_session, :remote, :pwd
 
     def initialize(watchers = [], options = {})
-      @ftp_session = Net::FTP.new(options[:hostname], options[:user], options[:password])
+      @hostname, @user, @password = options[:hostname], options[:user], options[:password]
+      @ftp_session = Net::FTP.new
       @remote       = options[:remote]
       @debug        = options[:debug]
       @pwd          = Dir.pwd
       
       log "Initialized with watchers = #{watchers.inspect}"
       log "Initialized with options  = #{options.inspect}"
-      
+
       super
     end
 
+    def connect
+      ftp_session.connect(@hostname)
+      ftp_session.login(@user, @password)
+    end
+
     def run_on_change(paths)
+      # reconnect, the connection may have been closed for idling
+      connect
+
       paths.each do |path|
         local_file  = File.join(pwd, path)
         remote_file = File.join(remote, path)
@@ -42,6 +51,9 @@ module Guard
 
         Notifier.notify "Synced:\n#{paths.join("\n")}"
       end
+
+      # close the connection when done, too much idling and Net::FTP becomes confused
+      ftp_session.close
     end
 
     private
@@ -66,6 +78,7 @@ module Guard
           log "Creating #{new_dir}"
           ftp_session.mkdir(new_dir)
         rescue Net::FTPPermError => ex
+          log "Permission error when creating the path"
         end
       end
     end
