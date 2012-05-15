@@ -9,10 +9,11 @@ module Guard
 
     def initialize(watchers = [], options = {})
       @hostname, @user, @password = options[:hostname], options[:user], options[:password]
-      @ftp_session = Net::FTP.new
+      @ftp_session  = Net::FTP.new
       @remote       = options[:remote]
       @debug        = options[:debug]
       @pwd          = Dir.pwd
+      @notify       = options[:notify] == false ? false : true
       
       log "Initialized with watchers = #{watchers.inspect}"
       log "Initialized with options  = #{options.inspect}"
@@ -49,7 +50,7 @@ module Guard
           log "Exceeded 3 attempts to upload #{path}"
         end
 
-        Notifier.notify "Synced:\n#{paths.join("\n")}"
+        Notifier.notify "Synced:\n#{paths.join("\n")}" if @notify
       end
 
       # close the connection when done, too much idling and Net::FTP becomes confused
