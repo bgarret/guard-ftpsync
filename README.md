@@ -22,29 +22,17 @@ This is a sample guardfile
 
 # Available options
 
-## hostname (required)
+`:hostname` **(required)** the ftp host
 
-The ftp host.
+`:user` the ftp username, defaults to `anonymous`
 
-## user
+`:password` the ftp password, defaults to `anonymous`
 
-The ftp username, defaults to `anonymous`.
+`:remote` the remote base directory, defaults to `nil`
 
-## password
+`:debug` whether to log debug essages in the console, defaults to `false`
 
-The ftp password, defaults to `anonymous`.
-
-## remote
-
-The remote base directory, defaults to `nil`.
-
-## debug
-
-Whether to log debug essages in the console, defaults to `false`.
-
-## notify
-
-Whether to send a notification on a successful sync, defaults to `true`.
+`:notify` whether to send a notification on a successful sync, defaults to `true`
 
 # Dependencies
 
