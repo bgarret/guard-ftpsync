@@ -1,6 +1,6 @@
-# guard-plopbox
+# guard-ftpsync
 
-Plopbox is a simple guard library that syncs local and remote directories via FTP as files are changed. 
+Ftpsync is a simple guard library that syncs local and remote directories via FTP as files are changed. 
 
 # Usage
 
@@ -14,8 +14,8 @@ This is a sample guardfile
       :debug       => true                  # output debug information
     }
 
-    group 'plopbox' do
-      guard 'plopbox', opts do
+    group 'ftp' do
+      guard 'ftpsync', opts do
         watch(/.*/)
       end
     end
@@ -26,4 +26,4 @@ This is a sample guardfile
 
 # Author
 
-Plopbox was written by Benoit Garret, based on [Flopbox](http://github.com/vincentchu/guard-flopbox) by Vincent Chu.
+Ftpsync was written by Benoit Garret, based on [Flopbox](http://github.com/vincentchu/guard-flopbox) by Vincent Chu.

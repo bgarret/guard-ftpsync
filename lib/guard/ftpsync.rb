@@ -3,7 +3,7 @@ require 'guard'
 require 'guard/guard'
 
 module Guard
-  class Plopbox < Guard
+  class Ftpsync < Guard
 
     attr_reader :ftp_session, :remote, :pwd
 

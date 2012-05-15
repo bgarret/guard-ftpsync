@@ -2,15 +2,15 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
-  s.name        = "guard-plopbox"
+  s.name        = "guard-ftpsync"
   s.version     = 0.1 
   s.authors     = ["Benoit Garret"]
   s.email       = ["benoit dot garret at gadz dot org"]
-  s.homepage    = "http://github.com/bgarret/guard-plopbox"
+  s.homepage    = "http://github.com/bgarret/guard-ftpsync"
   s.summary     = %q{A simple guard library for syncing local and remote directories via FTP}
   s.description = %q{A simple guard library for syncing local and remote directories via FTP}
 
-  s.rubyforge_project = "guard-plopbox"
+  s.rubyforge_project = "guard-ftpsync"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
