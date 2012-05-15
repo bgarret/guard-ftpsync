@@ -1,6 +1,6 @@
 # guard-ftpsync
 
-Ftpsync is a simple guard library that syncs local and remote directories via FTP as files are changed. 
+Ftpsync is a simple guard library that syncs local and remote directories via FTP as files are changed, a bit like Dreamweaver does.
 
 # Usage
 
@@ -19,6 +19,32 @@ This is a sample guardfile
         watch(/.*/)
       end
     end
+
+# Available options
+
+## hostname (required)
+
+The ftp host.
+
+## user
+
+The ftp username, defaults to `anonymous`.
+
+## password
+
+The ftp password, defaults to `anonymous`.
+
+## remote
+
+The remote base directory, defaults to `nil`.
+
+## debug
+
+Whether to log debug essages in the console, defaults to `false`.
+
+## notify
+
+Whether to send a notification on a successful sync, defaults to `true`.
 
 # Dependencies
 
