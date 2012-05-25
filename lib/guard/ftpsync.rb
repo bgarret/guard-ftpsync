@@ -47,7 +47,7 @@ module Guard
           recursively_create_dirs(remote_dir)
 
           retry if (attempts < 3)
-          log "Exceeded 3 attempts to upload #{path}"
+          Notifier.notify "Exceeded 3 attempts to upload #{path}", :image => :failed if @notify
         end
       end
 
