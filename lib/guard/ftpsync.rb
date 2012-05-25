@@ -49,9 +49,9 @@ module Guard
           retry if (attempts < 3)
           log "Exceeded 3 attempts to upload #{path}"
         end
-
-        Notifier.notify "Synced:\n#{paths.join("\n")}" if @notify
       end
+
+      Notifier.notify "Synced:\n#{paths.join("\n")}" if @notify
 
       # close the connection when done, too much idling and Net::FTP becomes confused
       ftp_session.close
